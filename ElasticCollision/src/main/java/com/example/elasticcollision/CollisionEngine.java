@@ -18,8 +18,9 @@ public class CollisionEngine {
         collideWithWalls(a, props, width);
         collideWithWalls(b, props, width);
 
-        if (a.getX() + a.getRadius() >= b.getX() - b.getRadius()) {
+        if (areColliding(a, b) && areApproaching(a, b)) {
             resolveCollision(a, b, props);
+            separateObjects(a, b);
         } else {
             applyFriction(a, props);
             applyFriction(b, props);
@@ -27,6 +28,25 @@ public class CollisionEngine {
 
         a.setX(a.getX() + a.getVelocity() * timeStep);
         b.setX(b.getX() + b.getVelocity() * timeStep);
+    }
+
+    private boolean areColliding(CollisionObject a, CollisionObject b) {
+        return a.getX() + a.getRadius() >= b.getX() - b.getRadius();
+    }
+
+    private boolean areApproaching(CollisionObject a, CollisionObject b) {
+        return a.getVelocity() > b.getVelocity();
+    }
+
+    private void separateObjects(CollisionObject a, CollisionObject b) {
+        double overlap = (a.getX() + a.getRadius()) - (b.getX() - b.getRadius());
+
+        if (overlap <= 0) {
+            return;
+        }
+
+        a.setX(a.getX() - overlap / 2.0);
+        b.setX(b.getX() + overlap / 2.0);
     }
 
     private void resolveCollision(
@@ -64,10 +84,12 @@ public class CollisionEngine {
             double width
     ) {
         if (obj.getX() - obj.getRadius() < 0) {
+            obj.setX(obj.getRadius());
             obj.setVelocity(Math.abs(obj.getVelocity()) * props.getWallRestitution());
         }
 
         if (obj.getX() + obj.getRadius() > width) {
+            obj.setX(width - obj.getRadius());
             obj.setVelocity(-Math.abs(obj.getVelocity()) * props.getWallRestitution());
         }
     }
