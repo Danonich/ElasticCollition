@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.elasticcollision.HelloController">
+   <top>
+      <Pane fx:id="playgroundPane" prefHeight="150.0" prefWidth="900.0" style="-fx-background-color: white; -fx-border-color: black;" BorderPane.alignment="CENTER">
+         <children>
+            <Circle fx:id="ball1" centerX="50.0" centerY="50.0" fill="DODGERBLUE" layoutX="57.0" layoutY="25.0" radius="45.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="ball2" fill="#ff1f1f" layoutX="763.0" layoutY="75.0" radius="45.0" stroke="BLACK" strokeType="INSIDE" />
+         </children>
+      </Pane>
+   </top>
+   <left>
+      <VBox prefHeight="437.0" prefWidth="307.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+         <children>
+            <TitledPane animated="false" text="Шар №1">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="241.0" prefWidth="305.0">
+                     <children>
+                        <TitledPane animated="false" layoutX="-1.0" text="Шар №2">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="241.0" prefWidth="305.0" />
+                           </content>
+                           <graphic>
+                              <GridPane>
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <Label text="Скорость" />
+                                    <Spinner fx:id="velocity2Spinner" GridPane.columnIndex="1" />
+                                    <Spinner fx:id="mass2Spinner" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <Label text="Масса" GridPane.rowIndex="1" />
+                                    <Label prefHeight="17.0" prefWidth="99.0" text="Материал шара" GridPane.rowIndex="2" />
+                                    <ComboBox fx:id="material2Combo" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                 </children>
+                              </GridPane>
+                           </graphic>
+                        </TitledPane>
+                     </children></AnchorPane>
+              </content>
+               <graphic>
+                  <GridPane>
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Скорость" />
+                        <Spinner fx:id="velocity1Spinner" GridPane.columnIndex="1" />
+                        <Spinner fx:id="mass1Spinner" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label text="Масса" GridPane.rowIndex="1" />
+                        <Label prefHeight="17.0" prefWidth="99.0" text="Материал шара" GridPane.rowIndex="2" />
+                        <ComboBox fx:id="material1Combo" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                     </children>
+                  </GridPane>
+               </graphic>
+            </TitledPane>
+            <TitledPane animated="false" text="Окружение">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="71.0" prefWidth="305.0" />
+              </content>
+               <graphic>
+                  <GridPane>
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Материал стены" />
+                        <Label text="Поверхность" GridPane.rowIndex="1" />
+                        <Label text="Трение" GridPane.rowIndex="2" />
+                        <ComboBox fx:id="wallMaterialCombo" prefWidth="150.0" GridPane.columnIndex="1" />
+                        <ComboBox fx:id="surfaceMaterialCombo" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="frictionLabel" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                     </children>
+                  </GridPane>
+               </graphic>
+            </TitledPane>
+         </children>
+      </VBox>
+   </left>
+   <right>
+      <HBox prefHeight="450.0" prefWidth="329.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+         <children>
+            <Button fx:id="startStopButton" mnemonicParsing="false" prefHeight="37.0" prefWidth="95.0" text="Старт/Стоп" />
+            <Button fx:id="resetButton" alignment="CENTER" layoutX="12.0" layoutY="60.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="95.0" text="Сброс" />
+            <Button fx:id="defaultButton" mnemonicParsing="false" prefHeight="38.0" prefWidth="105.0" text="По-умолчанию" />
+         </children>
+      </HBox>
+   </right>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Скорость шара №1:" textFill="#3358da" />
+                  <Label fx:id="velocity1Label" GridPane.columnIndex="1" />
+                  <Label text="Кинетическая энергия:" textFill="#3358da" GridPane.rowIndex="1" />
+                  <Label text="Коэфф упругости:" textFill="#3358da" GridPane.rowIndex="2" />
+                  <Label fx:id="energy1Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label fx:id="restitution1Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+               </children>
+            </GridPane>
+            <GridPane layoutX="10.0" layoutY="10.0" prefHeight="99.0" prefWidth="264.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label text="Скорость шара №1:" textFill="RED" />
+                  <Label fx:id="velocity2Label" GridPane.columnIndex="1" />
+                  <Label text="Кинетическая энергия:" textFill="RED" GridPane.rowIndex="1" />
+                  <Label text="Коэфф упругости:" textFill="RED" GridPane.rowIndex="2" />
+                  <Label fx:id="energy2Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label fx:id="restitution2Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+               </children>
+            </GridPane>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
